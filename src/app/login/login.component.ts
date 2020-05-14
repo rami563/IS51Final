@@ -9,6 +9,9 @@ import { Subject } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
 
+  username = '';
+  password = '';
+
   constructor(private router: Router, private toastService: ToastService) {
   }
 
@@ -16,4 +19,12 @@ export class LoginComponent implements OnInit {
 
   }
 
+  login(){
+    if(this.username !== 'rami' && this.password !=='rami123'){
+      this.toastService.showToast('danger', 2000, 'Wrong Username or Password')
+    } else {
+      this.router.navigate(['cart'])
+      this.toastService.showToast('success', 2000, 'Login Successful')
+    }
+  }
 }
